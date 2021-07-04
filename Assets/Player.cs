@@ -15,13 +15,14 @@ public class Player : MonoBehaviour
     public double fpsRate = 0;
     public double queenFrogChance = 0;
     public double totalMoney = 0;
+    public float speedInc;
     
 
 
 
     void Start()
     {
-        
+        speedInc=0.5f;
     }
 
     // Update is called once per frame

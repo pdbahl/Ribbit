@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class FrogAI : MonoBehaviour
 {
-    Player player;
+    public Player player;
     private Vector2 position;
     private Vector2 target;
     private Vector2 target2 ;
     private Vector2 target3 ;
-    public float speed = 1f;
+    public float speed;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("player").GetComponent<Player>();
@@ -22,6 +22,7 @@ public class FrogAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        speed = player.speedInc;
         float step = speed*Time.deltaTime;
        transform.position = Vector2.MoveTowards(transform.position,target,step);
         
