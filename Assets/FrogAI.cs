@@ -9,7 +9,7 @@ public class FrogAI : MonoBehaviour
     private Vector2 target;
     private Vector2 target2 ;
     private Vector2 target3 ;
-    private float speed = 1f;
+    public float speed = 1f;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("player").GetComponent<Player>();

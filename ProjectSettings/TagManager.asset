@@ -21,6 +21,15 @@ TagManager:
   - desc3
   - desc4
   - desc5
+  - item6
+  - item7
+  - item8
+  - item9
+  - desc6
+  - desc7
+  - desc8
+  - desc9
+  - frog
   layers:
   - Default
   - TransparentFX
