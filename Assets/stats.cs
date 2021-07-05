@@ -19,9 +19,9 @@ public class stats : MonoBehaviour
     void Update()
     {
         
-        cpf = player.eggRate*player.eggValue*player.frogs;
+        cpf = player.eggRate*player.eggValue*player.frogs*player.currentMultiplyer;
         player.money += cpf;
-        stat.text = "Cash: "+ shortener(player.money) +"\n frogs: "+ shortener(player.frogs)+"\n cash/sec " + shortener((cpf*60));
+        stat.text = "Cash: "+ shortener(player.money) +"\n frogs: "+ shortener(player.frogs)+"\n cash/sec " + shortener((cpf*60)) + "\n currentMultiplyer: "+ player.currentMultiplyer.ToString("#");
     }
 
     public string shortener(double a){

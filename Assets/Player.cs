@@ -16,12 +16,13 @@ public class Player : MonoBehaviour
     public double queenFrogChance = 0;
     public double totalMoney = 0;
     public float speedInc;
-    
-
-
+    public double currentMultiplyer = 1.0;
+    public double maxMultiplyer = 1;
+    public double bonusPerFrog = .02;
 
     void Start()
     {
+        if(currentMultiplyer<1){currentMultiplyer=1.0;}
         speedInc=0.5f;
     }
 

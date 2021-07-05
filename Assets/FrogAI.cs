@@ -10,8 +10,12 @@ public class FrogAI : MonoBehaviour
     private Vector2 target2 ;
     private Vector2 target3 ;
     public float speed;
+    bool isRunning;
+    bool counted;
+
     void Start()
     {
+        isRunning=true;
         player = GameObject.FindGameObjectWithTag("player").GetComponent<Player>();
         target = new Vector2(Random.Range(-3.5f,-2.5f),Random.Range(0f,-1.5f));
         target2 = new Vector2(Random.Range(.5f,1f),Random.Range(-2.25f,-3f));
@@ -22,6 +26,11 @@ public class FrogAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isRunning&&player.currentMultiplyer<player.maxMultiplyer){
+            counted = true;
+            player.currentMultiplyer+=player.bonusPerFrog;
+            isRunning=false;
+        }
         speed = player.speedInc;
         float step = speed*Time.deltaTime;
        transform.position = Vector2.MoveTowards(transform.position,target,step);
@@ -36,11 +45,14 @@ public class FrogAI : MonoBehaviour
         
 
         if(Vector2.Distance(transform.position,target3)<0.1f){
+            if(counted){
+            player.currentMultiplyer-=player.bonusPerFrog;
+            }
             Destroy(transform.root.gameObject);
             if(this.gameObject.name=="queenFrog(Clone)"){
                 player.frogs+=100;
             }else{
-            player.frogs++;
+                player.frogs++;
             }        
         }
     }

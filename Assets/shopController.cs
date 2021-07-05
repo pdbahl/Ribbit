@@ -10,7 +10,7 @@ public class shopController : MonoBehaviour
     public Button[] buttons = new Button[10];
     double[] items = {1.2,4,125,1000,300,1750,10500,150000,12345678,987654321};
     int[] itemAmt = {0,0,0,0,0,0,0,0,0,0};
-    int[] itemLimit = {10,20,5,1,10,100,20,1,1,1};
+    int[] itemLimit = {10,20,5,1,10,100,20,1,50,5};
     int[] reqUpgrades = {0,0,0,0,0,30,30,30,30,30};
     int totalUpgrades = 0;
     double priceReduction = 0;
@@ -110,11 +110,15 @@ public class shopController : MonoBehaviour
         }
     } public void item8U(){
         if(player.money>=items[8]&&itemAmt[8]<itemLimit[8]){
-            player.money-=items[8]*(1-(priceReduction*itemAmt[8])*.01);;
+            player.money-=items[8]*(1-(priceReduction*itemAmt[8])*.01);
+            player.maxMultiplyer+=0.5;            
+            itemAmt[8]++;
         }
     } public void item9U(){
         if(player.money>=items[9]&&itemAmt[9]<itemLimit[9]){
-            player.money-=items[9]*(1-(priceReduction*itemAmt[9])*.01);;
+            player.money-=items[9]*(1-(priceReduction*itemAmt[9])*.01);
+            player.bonusPerFrog+=.01;
+            itemAmt[9]++;
         }
     }
    
