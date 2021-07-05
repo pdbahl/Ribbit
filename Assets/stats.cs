@@ -7,7 +7,7 @@ public class stats : MonoBehaviour
 {
     public Text stat;
     public Player player; 
-    double cpf; 
+    public double cpf; 
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,7 @@ public class stats : MonoBehaviour
         //cash per frame
         cpf = player.eggRate*player.eggValue*player.frogs*player.currentMultiplyer;
         player.money += cpf;
-        stat.text = "Cash: "+ shortener(player.money) +"\n frogs: "+ shortener(player.frogs)+"\n cash/sec " + shortener((cpf*60)) + "\n currentMultiplyer: "+ player.currentMultiplyer.ToString("#");
+        stat.text = "Cash: "+ shortener(player.money) +"\n frogs: "+ shortener(player.frogs)+"\n cash/sec " + shortener((cpf*Application.targetFrameRate)) + "\n currentMultiplyer: "+ player.currentMultiplyer.ToString("#");
     }
     //makes the numbers like 1,000,000 -> 1M for example
     public string shortener(double a){

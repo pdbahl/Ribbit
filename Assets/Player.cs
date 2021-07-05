@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
     public double money = 0;
     public double frogs = 1;
-    public double eggRate = .02;
+    public double eggRate = .01;
     public double eggValue = .03;
     public int frogInc = 1;
     public bool fps = false;
@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        Application.targetFrameRate = 60;
         if(currentMultiplyer<1){currentMultiplyer=1.0;}
         speedInc=0.5f;
     }
