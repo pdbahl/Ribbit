@@ -36,15 +36,15 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\timedEvents.cs" />
      <Compile Include="Assets\UINav.cs" />
      <Compile Include="Assets\spawnFrog.cs" />
      <Compile Include="Assets\shopController.cs" />
      <Compile Include="Assets\ShopItem.cs" />
      <Compile Include="Assets\Player.cs" />
+     <Compile Include="Assets\flyAI.cs" />
      <Compile Include="Assets\stats.cs" />
      <Compile Include="Assets\FrogAI.cs" />
-     <Compile Include="Assets\timedEvents.cs" />
-     <Compile Include="Assets\flyAI.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
