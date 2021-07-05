@@ -26,6 +26,7 @@ public class FrogAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //make sure that it doesn't add to the running multiplier if its at the max multiplier already
         if(isRunning&&player.currentMultiplyer<player.maxMultiplyer){
             counted = true;
             player.currentMultiplyer+=player.bonusPerFrog;
@@ -33,17 +34,19 @@ public class FrogAI : MonoBehaviour
         }
         speed = player.speedInc;
         float step = speed*Time.deltaTime;
+        //go to node1
        transform.position = Vector2.MoveTowards(transform.position,target,step);
         
+        //go to node2
         if(Vector2.Distance(transform.position,target)<.01){
             target = target2;
         }
-
+        //go to final node
         if(Vector2.Distance(transform.position,target)<.001){
             target = target3;
         }
         
-
+        
         if(Vector2.Distance(transform.position,target3)<0.1f){
             if(counted){
             player.currentMultiplyer-=player.bonusPerFrog;

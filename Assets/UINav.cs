@@ -15,6 +15,9 @@ public class UINav : MonoBehaviour
         panel1 = GameObject.FindGameObjectWithTag("panel1");
         panel2 = GameObject.FindGameObjectWithTag("panel2");
         panel3 = GameObject.FindGameObjectWithTag("panel3");
+        panel1 .SetActive(false);
+        panel2 .SetActive(false);
+        panel3 .SetActive(false);
     }
 
     // Update is called once per frame
@@ -25,19 +28,31 @@ public class UINav : MonoBehaviour
     }
     
     public void showTab1(){
-        panel1.SetActive(true);
-        panel2.SetActive(false);
-        panel3.SetActive(false);
+         if(panel1.activeSelf){
+            panel1.SetActive(false);
+        }else{
+            panel1.SetActive(true);
+            panel2.SetActive(false);
+            panel3.SetActive(false);
+        }
     }    
     public void showTab2(){
-        panel1.SetActive(false);
-        panel2.SetActive(true);
-        panel3.SetActive(false);
+        if(panel2.activeSelf){
+            panel2.SetActive(false);
+        }else{
+            panel2.SetActive(true);
+            panel1.SetActive(false);
+            panel3.SetActive(false);
+        }
     }
     public void showTab3(){
-        panel1.SetActive(false);
-        panel2.SetActive(false);
-        panel3.SetActive(true);
+        if(panel3.activeSelf){
+            panel3.SetActive(false);
+        }else{
+            panel3.SetActive(true);
+            panel2.SetActive(false);
+            panel1.SetActive(false);
+        }
     }
 
 

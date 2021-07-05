@@ -8,10 +8,10 @@ public class shopController : MonoBehaviour
 
     public Player player;
     public Button[] buttons = new Button[10];
-    double[] items = {1.2,4,125,1000,300,1750,10500,150000,12345678,987654321};
-    int[] itemAmt = {0,0,0,0,0,0,0,0,0,0};
-    int[] itemLimit = {10,20,5,1,10,100,20,1,50,5};
-    int[] reqUpgrades = {0,0,0,0,0,30,30,30,30,30};
+    double[] items = {1.2,4,125,1000,300,1750,10500,150000,12345678,987654321}; //item base prices
+    int[] itemAmt = {0,0,0,0,0,0,0,0,0,0}; //amount of times upgraded
+    int[] itemLimit = {10,20,5,1,10,100,20,1,50,5};//the max amount an item can be upgraded
+    int[] reqUpgrades = {0,0,0,0,0,30,30,30,30,30};//the min amount of total upgrades you need for an item to be purchaseable
     int totalUpgrades = 0;
     double priceReduction = 0;
     public Text[] descTexts = new Text[10];
@@ -24,6 +24,7 @@ public class shopController : MonoBehaviour
     {
     player = GameObject.FindGameObjectWithTag("player").GetComponent<Player>();
    
+    //retrieves and populates these arrays with the respective components
     for(int i = 0;i<buttons.Length;i++){
         buttons[i] = GameObject.FindGameObjectWithTag("item"+i.ToString()).GetComponent<Button>();
         descTexts[i]=GameObject.FindGameObjectWithTag("desc"+i.ToString()).GetComponent<Text>();
@@ -39,7 +40,7 @@ public class shopController : MonoBehaviour
             itemFunc(j);
         }
     }
-
+    //these are all each individual upgrade's functionality
     public void item0U(){
         if(player.money>=items[0] && itemAmt[0]<itemLimit[0]){
             player.money-=items[0]*(1-(priceReduction*itemAmt[0])*.01);;
@@ -122,7 +123,7 @@ public class shopController : MonoBehaviour
         }
     }
    
-   
+   //functionality of the buttons, changes colors and if theyre interactable
     void itemFunc(int _i){
         if(itemAmt[_i]<itemLimit[_i]){
             buttons[_i].GetComponentInChildren<Text>().text="item "+_i+": " + shortener(items[_i]*(1-(priceReduction)*.01));

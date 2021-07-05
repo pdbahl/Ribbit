@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShopItem : MonoBehaviour
 {
-    
+    //is this script even used? idfk
     public double price;
     public string title;
     string displayText = "";
