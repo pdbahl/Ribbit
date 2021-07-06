@@ -30,6 +30,16 @@ TagManager:
   - desc8
   - desc9
   - frog
+  - item10
+  - desc10
+  - item11
+  - desc11
+  - item12
+  - desc12
+  - item13
+  - desc13
+  - item14
+  - desc14
   layers:
   - Default
   - TransparentFX

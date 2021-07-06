@@ -21,7 +21,10 @@ public class stats : MonoBehaviour
         //cash per frame
         cpf = player.eggRate*player.eggValue*player.frogs*player.currentMultiplyer;
         player.money += cpf;
-        stat.text = "Cash: "+ shortener(player.money) +"\n frogs: "+ shortener(player.frogs)+"\n cash/sec " + shortener((cpf*Application.targetFrameRate)) + "\n currentMultiplyer: "+ player.currentMultiplyer.ToString("#");
+        player.totalMoney += cpf;
+        stat.text = "Cash: "+ shortener(player.money) +"\n frogs: "+ shortener(player.frogs)+"\n cash/sec "
+         + shortener((cpf*Application.targetFrameRate)) + "\n currentMultiplyer: "+ player.currentMultiplyer.ToString("#.##")+
+         "\ntotal money: " + shortener(player.totalMoney);
     }
     //makes the numbers like 1,000,000 -> 1M for example
     public string shortener(double a){

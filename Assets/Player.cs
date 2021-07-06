@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     {
         
         if(fps==true){
-            frogs+=.002 * fpsRate;
+            frogs+=.005 * fpsRate;
         }
 
     }

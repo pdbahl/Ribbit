@@ -7,17 +7,30 @@ public class shopController : MonoBehaviour
 {
 
     public Player player;
-    public Button[] buttons = new Button[10];
-    double[] items = {1.2,4,125,1000,300,1750,10500,150000,12345678,987654321}; //item base prices
-    int[] itemAmt = {0,0,0,0,0,0,0,0,0,0}; //amount of times upgraded
-    int[] itemLimit = {10,20,5,1,10,100,20,1,50,5};//the max amount an item can be upgraded
-    int[] reqUpgrades = {0,0,0,0,0,30,30,30,30,30};//the min amount of total upgrades you need for an item to be purchaseable
+    public Button[] buttons = new Button[15];
+    double[] items = {1.2,4,125,1000,300,
+                    1750,10500,150000,1234567,9876543,
+                    1,1,1,1,1}; //item base prices
+
+    int[] itemAmt = {0,0,0,0,0,
+                    0,0,0,0,0,
+                    0,0,0,0,0}; //amount of times upgraded
+
+    int[] itemLimit = {10,20,5,2,10,
+                    100,20,1,50,5,
+                    1,1,1,1,1};//the max amount an item can be upgraded
+
+    int[] reqUpgrades = {0,0,0,0,0,
+                        30,30,30,30,30,
+                        100,100,100,100,100};//the min amount of total upgrades you need for an item to be purchaseable
+
     int totalUpgrades = 0;
     double priceReduction = 0;
-    public Text[] descTexts = new Text[10];
+    public Text[] descTexts = new Text[15];
     string[] descs = {  " increase egg value by 5%"," increase egg rate by 5%"," DOUBLES egg value",
-                        " increase frog/click by 2"," gain passive frogs /s"," gives .1% chance to spawn queenFrog\n"
-                        ,"reduces shop costs by .1%/rank","increase frog walking speed","increase max multiplier by .5 per rank","increase bonus/frog/rank by .01"};
+                        " increase frog/click by 2"," gain passive frogs /s"," gives .1% chance to spawn queenFrog"
+                        ,"reduces shop costs by .15%/rank","increase frog walking speed","increase max multiplier by .5 per rank","increase bonus/frog/rank by .01",
+                        "desc10","desc11","desc12","desc13","desc14"};
  
     // Start is called before the first frame update
     void Start()
@@ -43,7 +56,7 @@ public class shopController : MonoBehaviour
     //these are all each individual upgrade's functionality
     public void item0U(){
         if(player.money>=items[0] && itemAmt[0]<itemLimit[0]){
-            player.money-=items[0]*(1-(priceReduction*itemAmt[0])*.01);;
+            player.money-=items[0]*(1-(priceReduction)*.01);;
             player.eggRate*=1.05;
             items[0]*=2.855;
             itemAmt[0]++;
@@ -52,34 +65,35 @@ public class shopController : MonoBehaviour
     }
     public void item1U(){
         if(player.money>=items[1]&&itemAmt[1]<itemLimit[1]){
-            player.money-=items[1]*(1-(priceReduction*itemAmt[1])*.01);;
+            player.money-=items[1]*(1-(priceReduction)*.01);;
             player.eggValue*=1.03;
-            items[1]*=2.955;
+            items[1]*=1.567;
             itemAmt[1]++;
             totalUpgrades++;
         }
     }
     public void item2U(){
         if(player.money>=items[2]&&itemAmt[2]<itemLimit[2]){
-            player.money-=items[2]*(1-(priceReduction*itemAmt[2])*.01);
+            player.money-=items[2]*(1-(priceReduction)*.01);
             player.eggValue*=2;
-            items[2]*=50;
+            items[2]*=25;
             itemAmt[2]++;
             totalUpgrades++;
         }
     }
     public void item3U(){
         if(player.money>=items[3]&&itemAmt[3]<itemLimit[3]){
-            player.money-=items[3]*(1-(priceReduction*itemAmt[3])*.01);;
+            player.money-=items[3]*(1-(priceReduction)*.01);;
             player.frogInc+=2;
+            items[3]*=100;
             itemAmt[3]++;
             totalUpgrades++;
         }
     }
     public void item4U(){
         if(player.money>=items[4]&&itemAmt[4]<itemLimit[4]){
-            player.money-=items[4]*(1-(priceReduction*itemAmt[4])*.01);;
-            items[4]*=5;
+            player.money-=items[4]*(1-(priceReduction)*.01);;
+            items[4]*=2.8;
             itemAmt[4]++;
             player.fps = true;
             player.fpsRate = itemAmt[4];
@@ -88,8 +102,8 @@ public class shopController : MonoBehaviour
     }
     public void item5U(){
         if(player.money>=items[5]&&itemAmt[5]<itemLimit[5]){
-            player.money-=items[5]*(1-(priceReduction*itemAmt[5])*.01);;
-            items[5]*=1.01;
+            player.money-=items[5]*(1-(priceReduction)*.01);;
+            items[5]*=1.23;
             player.queenFrogChance +=.1;
             itemAmt[5]++;
             totalUpgrades++;
@@ -98,31 +112,62 @@ public class shopController : MonoBehaviour
      public void item6U(){
         if(player.money>=items[6]&&itemAmt[6]<itemLimit[6]){
             player.money-=items[6]*(1-(priceReduction)*.01);;
-            priceReduction+=.1;
+            priceReduction+=.15;
             itemAmt[6]++;
             items[6]*=1.6;
         }
     }
      public void item7U(){
         if(player.money>=items[7]&&itemAmt[7]<itemLimit[7]){
-            player.money-=items[7]*(1-(priceReduction*itemAmt[7])*.01);
+            player.money-=items[7]*(1-(priceReduction)*.01);
             player.speedInc++;
             itemAmt[7]++;
         }
-    } public void item8U(){
+    }
+     public void item8U(){
         if(player.money>=items[8]&&itemAmt[8]<itemLimit[8]){
-            player.money-=items[8]*(1-(priceReduction*itemAmt[8])*.01);
+            player.money-=items[8]*(1-(priceReduction)*.01);
             player.maxMultiplyer+=0.5;            
             itemAmt[8]++;
         }
-    } public void item9U(){
+    } 
+    public void item9U(){
         if(player.money>=items[9]&&itemAmt[9]<itemLimit[9]){
-            player.money-=items[9]*(1-(priceReduction*itemAmt[9])*.01);
+            player.money-=items[9]*(1-(priceReduction)*.01);
             player.bonusPerFrog+=.01;
             itemAmt[9]++;
         }
     }
-   
+   public void item10U(){
+        if(player.money>=items[10]&&itemAmt[10]<itemLimit[10]){
+            player.money-=items[10]*(1-(priceReduction)*.01);
+            itemAmt[10]++;
+        }
+    }
+    public void item11U(){
+        if(player.money>=items[11]&&itemAmt[11]<itemLimit[11]){
+            player.money-=items[11]*(1-(priceReduction)*.01);
+            itemAmt[11]++;
+        }
+    }
+    public void item12U(){
+        if(player.money>=items[12]&&itemAmt[12]<itemLimit[12]){
+            player.money-=items[12]*(1-(priceReduction)*.01);
+            itemAmt[12]++;
+        }
+    }
+    public void item13U(){
+        if(player.money>=items[13]&&itemAmt[13]<itemLimit[13]){
+            player.money-=items[13]*(1-(priceReduction)*.01);
+            itemAmt[13]++;
+        }
+    }
+    public void item14U(){
+        if(player.money>=items[14]&&itemAmt[14]<itemLimit[14]){
+            player.money-=items[14]*(1-(priceReduction)*.01);
+            itemAmt[14]++;
+        }
+    }
    //functionality of the buttons, changes colors and if theyre interactable
     void itemFunc(int _i){
         if(itemAmt[_i]<itemLimit[_i]){

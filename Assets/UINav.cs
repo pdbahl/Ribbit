@@ -53,7 +53,12 @@ public class UINav : MonoBehaviour
             panel2.SetActive(false);
             panel1.SetActive(false);
         }
+
+        
     }
 
+    public void closeGame(){
+        Application.Quit();
+    }
 
 }
