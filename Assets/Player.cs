@@ -23,14 +23,13 @@ public class Player : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
-        if(currentMultiplyer<1){currentMultiplyer=1.0;}
         speedInc=0.5f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+     if(currentMultiplyer<1){currentMultiplyer=1.0;}    
         if(fps==true){
             frogs+=.005 * fpsRate;
         }
