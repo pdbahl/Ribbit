@@ -40,6 +40,7 @@ TagManager:
   - desc13
   - item14
   - desc14
+  - totalUpgrades
   layers:
   - Default
   - TransparentFX

@@ -226,6 +226,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  priceReduction: 0
   descTexts:
   - {fileID: 0}
   - {fileID: 0}
@@ -242,6 +243,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  tUpgradesText: {fileID: 0}
 --- !u!114 &10068434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,7 +847,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 10068433}
         m_TargetAssemblyTypeName: shopController, Assembly-CSharp
-        m_MethodName: item5U
+        m_MethodName: item10U
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -979,7 +981,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 10068433}
         m_TargetAssemblyTypeName: shopController, Assembly-CSharp
-        m_MethodName: item5U
+        m_MethodName: item14U
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2334,6 +2336,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620994287}
   m_CullTransparentMesh: 1
+--- !u!1 &630755082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 630755083}
+  - component: {fileID: 630755085}
+  - component: {fileID: 630755084}
+  m_Layer: 5
+  m_Name: Total Upgrades
+  m_TagString: totalUpgrades
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &630755083
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630755082}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2056984093}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 7522.8, y: -3584.1519}
+  m_SizeDelta: {x: 4000, y: 585.672}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &630755084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630755082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 300
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Total Upgrades: 0'
+--- !u!222 &630755085
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630755082}
+  m_CullTransparentMesh: 1
 --- !u!1 &661193412
 GameObject:
   m_ObjectHideFlags: 0
@@ -3443,7 +3524,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 10068433}
         m_TargetAssemblyTypeName: shopController, Assembly-CSharp
-        m_MethodName: item5U
+        m_MethodName: item12U
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4547,7 +4628,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 10068433}
         m_TargetAssemblyTypeName: shopController, Assembly-CSharp
-        m_MethodName: item5U
+        m_MethodName: item11U
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6121,6 +6202,7 @@ RectTransform:
   - {fileID: 1008475333}
   - {fileID: 2078634983}
   - {fileID: 145888055}
+  - {fileID: 630755083}
   m_Father: {fileID: 768295338}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6253,7 +6335,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 10068433}
         m_TargetAssemblyTypeName: shopController, Assembly-CSharp
-        m_MethodName: item5U
+        m_MethodName: item13U
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
