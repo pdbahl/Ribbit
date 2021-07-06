@@ -176,7 +176,7 @@ public class shopController : MonoBehaviour
     public void item13U(){
         if(player.money>=items[13]&&itemAmt[13]<itemLimit[13]){
             player.money-=items[13]*(1-(priceReduction)*.01);
-            player.speedInc--;
+            player.speedInc-=.5f;
             itemAmt[13]++;
             totalUpgrades++;
         }
