@@ -17,7 +17,7 @@ public class shopController : MonoBehaviour
     public Text[] descTexts = new Text[10];
     string[] descs = {  " increase egg value by 5%"," increase egg rate by 5%"," DOUBLES egg value",
                         " increase frog/click by 2"," gain passive frogs /s"," gives .1% chance to spawn queenFrog\n"
-                        ,"reduces shop costs by .1%/rank","increase frog walking speed","desc8","desc9"};
+                        ,"reduces shop costs by .1%/rank","increase frog walking speed","increase max multiplier by .5 per rank","increase bonus/frog/rank by .01"};
  
     // Start is called before the first frame update
     void Start()
