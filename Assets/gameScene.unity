@@ -170,8 +170,10 @@ MonoBehaviour:
   maxMultiplyer: 1
   bonusPerFrog: 0.02
   workerTimer: 300
-  maxWorkers: 2
+  maxWorkers: 0
   currentWorkers: 0
+  workerSpeed: 0.05
+  workerGainPercent: 1.1
 --- !u!4 &10068431
 Transform:
   m_ObjectHideFlags: 0
@@ -230,8 +232,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   priceReduction: 0
   descTexts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1293,7 +1305,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 10068433}
         m_TargetAssemblyTypeName: shopController, Assembly-CSharp
-        m_MethodName: item12U
+        m_MethodName: item17U
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3183,7 +3195,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 10068433}
         m_TargetAssemblyTypeName: shopController, Assembly-CSharp
-        m_MethodName: item14U
+        m_MethodName: item19U
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3994,7 +4006,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 10068433}
         m_TargetAssemblyTypeName: shopController, Assembly-CSharp
-        m_MethodName: item11U
+        m_MethodName: item16U
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4128,7 +4140,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 10068433}
         m_TargetAssemblyTypeName: shopController, Assembly-CSharp
-        m_MethodName: item13U
+        m_MethodName: item18U
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5061,7 +5073,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 10068433}
         m_TargetAssemblyTypeName: shopController, Assembly-CSharp
-        m_MethodName: item10U
+        m_MethodName: item15U
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
