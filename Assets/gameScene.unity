@@ -169,11 +169,11 @@ MonoBehaviour:
   currentMultiplyer: 1
   maxMultiplyer: 1
   bonusPerFrog: 0.02
-  workerTimer: 300
+  workerTimer: 180000
   maxWorkers: 0
   currentWorkers: 0
-  workerSpeed: 0.05
-  workerGainPercent: 1.1
+  workerSpeed: 0.25
+  workerGainPercent: 0.1
 --- !u!4 &10068431
 Transform:
   m_ObjectHideFlags: 0

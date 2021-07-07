@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     public int workerTimer = 180000;
     public int maxWorkers = 0;
     public int currentWorkers = 0;
-    public float workerSpeed = .25f;
+    public float workerSpeed = .4f;
     public double workerGainPercent = .1;
 
     void Start()

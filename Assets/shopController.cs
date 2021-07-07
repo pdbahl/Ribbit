@@ -20,7 +20,7 @@ public class shopController : MonoBehaviour
 
     int[] itemLimit = {10,20,5,2,10,
                     100,20,5,50,5,
-                    10,1,15,1,10,
+                    10,1,15,10,10,
                     3,5,10,1,10};//the max amount an item can be upgraded
 
     int[] reqUpgrades = {0,0,0,0,0,
@@ -133,12 +133,12 @@ public class shopController : MonoBehaviour
     }
     public void item13U(){
         if(buttonFunc(13,1)){
-            player.speedInc-=.5f;
+            player.speedInc*=.95f;
         }
     }
     public void item14U(){
         if(buttonFunc(14,2)){
-            player.fpsRate++;
+            player.fpsRate*=1.5;
         }
     }
     public void item15U(){
@@ -153,7 +153,7 @@ public class shopController : MonoBehaviour
     }
     public void item17U(){
         if(buttonFunc(17,5)){
-        player.workerSpeed *=1.1f;
+        player.workerSpeed *=1.2f;
         }
     }
     public void item18U(){
@@ -173,7 +173,7 @@ public class shopController : MonoBehaviour
         }else{
                     buttons[_i].GetComponentInChildren<Text>().text="item "+_i+" : LIMIT";
         }
-        if(player.money<items[_i]||itemAmt[_i]>=itemLimit[_i]||reqUpgrades[_i]>totalUpgrades){
+        if(player.money<items[_i]*(1-(priceReduction)*.01)||itemAmt[_i]>=itemLimit[_i]||reqUpgrades[_i]>totalUpgrades){
             buttons[_i].interactable= false;
             buttons[_i].GetComponentInChildren<Text>().color = Color.white;
 
@@ -197,7 +197,7 @@ public class shopController : MonoBehaviour
         return a.ToString("#.##");
     }
     bool buttonFunc(int id,double priceInc){
-        if(player.money>=items[id]&&itemAmt[id]<itemLimit[id]){
+        if(player.money>=items[id]*(1-(priceReduction)*.01)&&itemAmt[id]<itemLimit[id]){
             player.money-=items[id]*(1-(priceReduction)*.01);
             items[id]*=priceInc;
             itemAmt[id]++;

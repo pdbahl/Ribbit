@@ -33,8 +33,9 @@ public class workerAI : MonoBehaviour
         
         if(worked &&(Vector2.Distance(transform.position,target)<.001)){
             player.currentWorkers--;
-            player.money = player.workerGainPercent*player.totalMoney;
-            player.totalMoney*=1.1;
+            player.money += player.workerGainPercent*player.totalMoney;
+            print(player.workerGainPercent*player.totalMoney);
+            player.totalMoney+= player.workerGainPercent*player.totalMoney;
             Destroy(transform.root.gameObject);
         }
         
