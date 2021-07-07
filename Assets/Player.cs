@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
 
     public double money = 0;
-    public double frogs = 1;
+    public double frogs = 0;
     public double eggRate = .01;
     public double eggValue = .03;
     public int frogInc = 1;
@@ -19,6 +19,11 @@ public class Player : MonoBehaviour
     public double currentMultiplyer = 1.0;
     public double maxMultiplyer = 1;
     public double bonusPerFrog = .02;
+    public int workerTimer = 180000;
+    public int maxWorkers = 0;
+    public int currentWorkers = 0;
+    public float workerSpeed = .25f;
+    public double workerGainPercent = .1;
 
     void Start()
     {

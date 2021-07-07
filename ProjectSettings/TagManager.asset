@@ -41,6 +41,17 @@ TagManager:
   - item14
   - desc14
   - totalUpgrades
+  - worker
+  - item15
+  - item16
+  - item17
+  - item18
+  - item19
+  - desc15
+  - desc16
+  - desc17
+  - desc18
+  - desc19
   layers:
   - Default
   - TransparentFX

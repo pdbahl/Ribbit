@@ -7,30 +7,35 @@ public class shopController : MonoBehaviour
 {
 
     public Player player;
-    public Button[] buttons = new Button[15];
+    public Button[] buttons = new Button[20];
     double[] items = {1.2,4,125,1000,300,
                     1750,10500,150000,1234567,9876543,
-                    666666,6969696,1200000,10000000,1500000}; //item base prices
+                    666666,6969696,1200000,10000000,1500000,
+                    21219909999,5000700000,23322622222,16665444332,67787667678}; //item base prices
 
     int[] itemAmt = {0,0,0,0,0,
+                    0,0,0,0,0,
                     0,0,0,0,0,
                     0,0,0,0,0}; //amount of times upgraded
 
     int[] itemLimit = {10,20,5,2,10,
                     100,20,1,50,5,
-                    10,1,15,1,10};//the max amount an item can be upgraded
+                    10,1,15,1,10,
+                    3,5,10,1,10};//the max amount an item can be upgraded
 
     int[] reqUpgrades = {0,0,0,0,0,
                         30,30,30,30,30,
-                        100,100,100,100,100};//the min amount of total upgrades you need for an item to be purchaseable
+                        100,100,100,100,100,
+                        200,200,200,200,200};//the min amount of total upgrades you need for an item to be purchaseable
 
     int totalUpgrades = 0;
     public double priceReduction = 0;
-    public Text[] descTexts = new Text[15];
+    public Text[] descTexts = new Text[20];
     string[] descs = {  " increase egg value by 5%"," increase egg rate by 5%"," DOUBLES egg value",
                         " increase frog/click by 2"," gain passive frogs /s"," gives .1% chance to spawn queenFrog"
                         ,"reduces shop costs by .15%/rank","increase frog walking speed","increase max multiplier by .5 per rank","increase bonus/frog/rank by .01",
-                        "increase egg value by 10%/rank","increase frog/click by 5/rank","increase egg value by 5%/rank","descrese frog speed","increase passive frog/sec"};
+                        "increase egg value by 10%/rank","increase frog/click by 5/rank","increase egg value by 5%/rank","descrese frog speed","increase passive frog/sec",
+                        "increase workers by 1/rank","decrease work time by 5%","increase worker speed","increase rarity of worker gains","increase worker gains by 1%/rank"};
     public Text tUpgradesText;
  
     // Start is called before the first frame update
@@ -58,136 +63,105 @@ public class shopController : MonoBehaviour
     }
     //these are all each individual upgrade's functionality
     public void item0U(){
-        if(player.money>=items[0] && itemAmt[0]<itemLimit[0]){
-            player.money-=items[0]*(1-(priceReduction)*.01);;
+        if(buttonFunc(0,2.677)){
             player.eggRate*=1.05;
-            items[0]*=2.855;
-            itemAmt[0]++;
-            totalUpgrades++;
         }
     }
     public void item1U(){
-        if(player.money>=items[1]&&itemAmt[1]<itemLimit[1]){
-            player.money-=items[1]*(1-(priceReduction)*.01);;
-            player.eggValue*=1.03;
-            items[1]*=1.567;
-            itemAmt[1]++;
-            totalUpgrades++;
+        if(buttonFunc(1,1.567)){
+            player.eggValue*=1.05;
         }
     }
     public void item2U(){
-        if(player.money>=items[2]&&itemAmt[2]<itemLimit[2]){
-            player.money-=items[2]*(1-(priceReduction)*.01);
-            player.eggValue*=2;
-            items[2]*=25;
-            itemAmt[2]++;
-            totalUpgrades++;
-        }
+       if(buttonFunc(2,25)){
+           player.eggValue*=2;
+       }
     }
     public void item3U(){
-        if(player.money>=items[3]&&itemAmt[3]<itemLimit[3]){
-            player.money-=items[3]*(1-(priceReduction)*.01);;
+       if(buttonFunc(3,100)){
             player.frogInc+=2;
-            items[3]*=100;
-            itemAmt[3]++;
-            totalUpgrades++;
-        }
+       }
     }
     public void item4U(){
-        if(player.money>=items[4]&&itemAmt[4]<itemLimit[4]){
-            player.money-=items[4]*(1-(priceReduction)*.01);;
-            items[4]*=2.8;
-            itemAmt[4]++;
+        if(buttonFunc(4,2.8)){
             player.fps = true;
             player.fpsRate = itemAmt[4];
-            totalUpgrades++;
         }
     }
     public void item5U(){
-        if(player.money>=items[5]&&itemAmt[5]<itemLimit[5]){
-            player.money-=items[5]*(1-(priceReduction)*.01);;
-            items[5]*=1.23;
+        if(buttonFunc(5,1.23)){
             player.queenFrogChance +=.1;
-            itemAmt[5]++;
-            totalUpgrades++;
         }
     }
      public void item6U(){
-        if(player.money>=items[6]&&itemAmt[6]<itemLimit[6]){
-            player.money-=items[6]*(1-(priceReduction)*.01);;
+        if(buttonFunc(6,1.6)){
             priceReduction+=.15;
-            itemAmt[6]++;
-            items[6]*=1.6;
-            totalUpgrades++;
-
         }
     }
      public void item7U(){
-        if(player.money>=items[7]&&itemAmt[7]<itemLimit[7]){
-            player.money-=items[7]*(1-(priceReduction)*.01);
+        if(buttonFunc(7,1)){
             player.speedInc++;
-            itemAmt[7]++;
-            totalUpgrades++;        
         }
     }
      public void item8U(){
-        if(player.money>=items[8]&&itemAmt[8]<itemLimit[8]){
-            player.money-=items[8]*(1-(priceReduction)*.01);
-            items[8]*=1.1;
-            player.maxMultiplyer+=0.5;            
-            itemAmt[8]++;
-            totalUpgrades++;
+        if(buttonFunc(8,1.22)){
+            player.maxMultiplyer+=0.5;   
         }
     } 
     public void item9U(){
-        if(player.money>=items[9]&&itemAmt[9]<itemLimit[9]){
-            player.money-=items[9]*(1-(priceReduction)*.01);
+        if(buttonFunc(9,1.788)){
             player.bonusPerFrog+=.01;
-            itemAmt[9]++;
-            totalUpgrades++;
         }
     }
    public void item10U(){
-        if(player.money>=items[10]&&itemAmt[10]<itemLimit[10]){
-            player.money-=items[10]*(1-(priceReduction)*.01);
+        if(buttonFunc(10,2.1)){
             player.eggRate*=1.1;
-            items[10]*=1.5;
-            itemAmt[10]++;
-            totalUpgrades++;
         }
-    }
+   }
     public void item11U(){
-        if(player.money>=items[11]&&itemAmt[11]<itemLimit[11]){
-            player.money-=items[11]*(1-(priceReduction)*.01);
+        if(buttonFunc(11,1)){
             player.frogInc+=5;
-            itemAmt[11]++;
-            totalUpgrades++;
+
         }
     }
     public void item12U(){
-        if(player.money>=items[12]&&itemAmt[12]<itemLimit[12]){
-            player.money-=items[12]*(1-(priceReduction)*.01);
+        if(buttonFunc(12,2.1)){
             player.eggValue*=1.05;
-            items[12]*=2.1;
-            itemAmt[12]++;
-            totalUpgrades++;
         }
     }
     public void item13U(){
-        if(player.money>=items[13]&&itemAmt[13]<itemLimit[13]){
-            player.money-=items[13]*(1-(priceReduction)*.01);
+        if(buttonFunc(13,1)){
             player.speedInc-=.5f;
-            itemAmt[13]++;
-            totalUpgrades++;
         }
     }
     public void item14U(){
-        if(player.money>=items[14]&&itemAmt[14]<itemLimit[14]){
-            player.money-=items[14]*(1-(priceReduction)*.01);
+        if(buttonFunc(14,2)){
             player.fpsRate++;
-            items[14]*=2;
-            itemAmt[14]++;
-            totalUpgrades++;
+        }
+    }
+    public void item15U(){
+        if(buttonFunc(15,3.543)){
+            player.maxWorkers++;
+        }
+    }
+    public void item16U(){
+        if(buttonFunc(16,3.55)){
+            player.workerTimer=(Mathf.FloorToInt(player.workerTimer*.95f));
+        }
+    }
+    public void item17U(){
+        if(buttonFunc(17,5)){
+        player.workerSpeed *=1.1f;
+        }
+    }
+    public void item18U(){
+        if(buttonFunc(18,1)){
+
+        }
+    }
+    public void item19U(){
+        if(buttonFunc(19,2)){
+            player.workerGainPercent+=.01;
         }
     }
    //functionality of the buttons, changes colors and if theyre interactable
@@ -219,5 +193,15 @@ public class shopController : MonoBehaviour
         }
 
         return a.ToString("#.##");
+    }
+    bool buttonFunc(int id,double priceInc){
+        if(player.money>=items[id]&&itemAmt[id]<itemLimit[id]){
+            player.money-=items[id]*(1-(priceReduction)*.01);
+            items[id]*=priceInc;
+            itemAmt[id]++;
+            totalUpgrades++;
+            return true;
+        }
+        return false;
     }
 }

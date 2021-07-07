@@ -6,23 +6,36 @@ public class timedEvents : MonoBehaviour
 {
 
     public GameObject fly;
-    public Vector3 spawnPosition;
+    public GameObject worker;
+    public Vector3 flySpawn;
+    public Vector3 workerSpawn;
+    Player player;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("spawnFly", 2.0f, 15f);
+        player = GameObject.FindGameObjectWithTag("player").GetComponent<Player>();
+        InvokeRepeating("spawnWorker",0f,10f);
+        //InvokeRepeating("spawnFly", 2.0f, 15f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     void spawnFly(){
-        spawnPosition = new Vector3(-10f,5f,0f);
-        Instantiate(fly,spawnPosition,Quaternion.identity);
+        flySpawn = new Vector3(-10f,5f,0f);
+        Instantiate(fly,flySpawn,Quaternion.identity);
+    }
+
+    void spawnWorker(){
+         if(player.currentWorkers<player.maxWorkers){
+             workerSpawn = new Vector3(6.5f,0,0);
+            Instantiate(worker,workerSpawn,Quaternion.identity);
+            player.currentWorkers++;
+        }
     }
 }
