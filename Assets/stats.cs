@@ -34,6 +34,8 @@ public class stats : MonoBehaviour
             return (a*.000001).ToString("#.##")+"M";
         }else if (a>=1000000000&&a<1000000000000){
             return (a*.000000001).ToString("#.##")+"B";
+        }else if (a>=1000000000000&&a<1000000000000000){
+            return (a*.000000000001).ToString("#.##")+"T";
         }
 
         return a.ToString("#.##");
