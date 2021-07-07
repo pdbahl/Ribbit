@@ -19,7 +19,7 @@ public class shopController : MonoBehaviour
                     0,0,0,0,0}; //amount of times upgraded
 
     int[] itemLimit = {10,20,5,2,10,
-                    100,20,1,50,5,
+                    100,20,5,50,5,
                     10,1,15,1,10,
                     3,5,10,1,10};//the max amount an item can be upgraded
 
@@ -33,7 +33,8 @@ public class shopController : MonoBehaviour
     public Text[] descTexts = new Text[20];
     string[] descs = {  " increase egg value by 5%"," increase egg rate by 5%"," DOUBLES egg value",
                         " increase frog/click by 2"," gain passive frogs /s"," gives .1% chance to spawn queenFrog"
-                        ,"reduces shop costs by .15%/rank","increase frog walking speed","increase max multiplier by .5 per rank","increase bonus/frog/rank by .01",
+                        ,"reduces shop costs by .15%/rank","increase egg value and rate by 25% each",
+                        "increase max multiplier by .5 per rank","increase bonus/frog/rank by .01",
                         "increase egg value by 10%/rank","increase frog/click by 5/rank","increase egg value by 5%/rank","descrese frog speed","increase passive frog/sec",
                         "increase workers by 1/rank","decrease work time by 5%","increase worker speed","increase rarity of worker gains","increase worker gains by 1%/rank"};
     public Text tUpgradesText;
@@ -99,8 +100,9 @@ public class shopController : MonoBehaviour
         }
     }
      public void item7U(){
-        if(buttonFunc(7,1)){
-            player.speedInc++;
+        if(buttonFunc(7,4.4444)){
+            player.eggRate*=1.25;
+            player.eggValue*=1.25;
         }
     }
      public void item8U(){
