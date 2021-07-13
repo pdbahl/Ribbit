@@ -12,7 +12,7 @@ public class shopController : MonoBehaviour
                     1750,10500,150000,1234567,9876543,
                     666666,6969696,1200000,10000000,1500000,
                     21219909999,5000700000,23322622222,16665444332,67787667678,
-                    1,1,1,1,1}; //item base prices
+                    199999900099999,56703000030330,9242088660211132,22323000322112,1}; //item base prices
 
     int[] itemAmt = {0,0,0,0,0,
                     0,0,0,0,0,
@@ -24,7 +24,7 @@ public class shopController : MonoBehaviour
                     100,20,5,50,5,
                     10,1,15,10,10,
                     3,5,10,5,10,
-                    1,1,1,1,1};//the max amount an item can be upgraded
+                    1,10,2,100,1};//the max amount an item can be upgraded
 
     int[] reqUpgrades = {0,0,0,0,0,
                         30,30,30,30,30,
@@ -35,13 +35,11 @@ public class shopController : MonoBehaviour
     int totalUpgrades = 0;
     public double priceReduction = 0;
     public Text[] descTexts = new Text[25];
-    string[] descs = {  " increase egg value by 5%"," increase egg rate by 5%"," DOUBLES egg value",
-                        " increase frog/click by 2"," gain passive frogs /s"," gives .1% chance to spawn queenFrog"
-                        ,"reduces shop costs by .15%/rank","increase egg value and rate by 25% each",
-                        "increase max multiplier by .5 per rank","increase bonus/frog/rank by .01",
+    string[] descs = {  " increase egg value by 5%"," increase egg rate by 5%"," DOUBLES egg value"," increase frog/click by 2"," gain passive frogs /s",
+                        " gives .1% chance to spawn queenFrog","reduces shop costs by .15%/rank","increase egg value and rate by 25% each","increase max multiplier by .5/rank","increase bonus/frog/rank by .01",
                         "increase egg value by 10%/rank","increase frog/click by 5/rank","increase egg value by 5%/rank","descrese frog speed","increase passive frog/sec",
-                        "increase workers by 1/rank","decrease work time by 5%","increase worker speed","increase rarity of worker gains","increase worker gains by 1%/rank",
-                        "TRIPLES egg value","increase passive frog/sec","","desc23","desc24"};
+                        "increase workers by 1/rank","decrease work time by 5%","increase worker speed","chance to possible get a 10x money boost","increase worker gains by 1%/rank",
+                        "TRIPLES egg value","increase passive frog/sec","gain 10% of your CURRENT frogs","increase max multiplier by .1/rank","unlock new worker location"};
     public Text tUpgradesText;
  
     // Start is called before the first frame update
@@ -167,25 +165,28 @@ public class shopController : MonoBehaviour
         }
     }
     public void item19U(){
-        if(buttonFunc(19,1)){
+        if(buttonFunc(19,1.25)){
             player.workerGainPercent+=.01;
         }
     }
     public void item20U(){
         if(buttonFunc(20,1)){
+            player.eggValue*=3;
         }
     }
     public void item21U(){
-        if(buttonFunc(21,1)){
+        if(buttonFunc(21,3.876)){
+            player.fpsRate*=1.5;
         }
     }
     public void item22U(){
-        if(buttonFunc(22,1)){
+        if(buttonFunc(22,4)){
+            player.frogs*=1.1;
         }
     }
     public void item23U(){
-        if(buttonFunc(23,1)){
-
+        if(buttonFunc(23,1.23)){
+            player.maxMultiplyer+=.1;
         }
     }
     public void item24U(){
