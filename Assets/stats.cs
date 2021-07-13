@@ -19,7 +19,7 @@ public class stats : MonoBehaviour
     void Update()
     {
         //cash per frame
-        cpf = player.eggRate*player.eggValue*player.frogs*player.currentMultiplyer;
+        cpf = player.eggRate*player.eggValue*player.frogs*player.currentMultiplyer*player.boost;
         player.money += cpf;
         player.totalMoney += cpf;
         stat.text = "Cash: "+ shortener(player.money) +"\nfrogs: "+ shortener(player.frogs)+"\ncash/sec "

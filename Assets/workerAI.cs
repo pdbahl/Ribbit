@@ -10,6 +10,7 @@ public class workerAI : MonoBehaviour
     float step;
     public int timer;
     bool worked = false;
+    public GameObject boostFly;
     void Start(){
         timer = 0;
         player = GameObject.FindGameObjectWithTag("player").GetComponent<Player>();
@@ -33,11 +34,20 @@ public class workerAI : MonoBehaviour
         
         if(worked &&(Vector2.Distance(transform.position,target)<.001)){
             player.currentWorkers--;
-            player.money += (double)(Random.Range(.1f,(float)player.workerGainPercent)*(float)player.totalMoney);
-            player.totalMoney+= player.workerGainPercent*player.totalMoney;
+            workerReward();
             Destroy(transform.root.gameObject);
         }
-        
+    }
+
+    void workerReward(){
+            float numSteps = Mathf.Floor(Random.Range(0f,100f)); //this just decides if its going to be a queen based on the chance
+            if(numSteps<=player.boostChance){
+                Instantiate(boostFly);
+                player.boost=10;
+            }else{
+                player.money += (double)(Random.Range(.1f,(float)player.workerGainPercent)*(float)player.totalMoney);
+                player.totalMoney+= player.workerGainPercent*player.totalMoney;
+        }
     }
 
 }

@@ -126,3 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4abe235cb9d0c6143a9812a77f8fb1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  home: {x: 0, y: 0}
+  target: {x: 0, y: 0}
+  timer: 0
+  boostFly: {fileID: 8991970336429370949, guid: 8d910155a385cad4ebaa813b9f423329, type: 3}

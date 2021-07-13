@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     public int currentWorkers = 0;
     public float workerSpeed = .4f;
     public double workerGainPercent = .1;
+    public double boost =1;
+    public double boostChance =0;
 
     void Start()
     {

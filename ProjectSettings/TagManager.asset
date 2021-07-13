@@ -52,6 +52,18 @@ TagManager:
   - desc17
   - desc18
   - desc19
+  - item20
+  - item21
+  - item22
+  - item23
+  - item24
+  - desc20
+  - desc21
+  - desc22
+  - desc23
+  - desc24
+  - boostTimer
+  - boostFly
   layers:
   - Default
   - TransparentFX
