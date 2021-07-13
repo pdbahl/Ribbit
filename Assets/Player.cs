@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     public double currentMultiplyer = 1.0;
     public double maxMultiplyer = 1;
     public double bonusPerFrog = .02;
-    public int workerTimer = 180000;
+    public int workerTimer = 18000;
     public int maxWorkers = 0;
     public int currentWorkers = 0;
     public float workerSpeed = .4f;
