@@ -40,13 +40,20 @@ public class workerAI : MonoBehaviour
     }
 
     void workerReward(){
-            float numSteps = Mathf.Floor(Random.Range(0f,100f)); //this just decides if its going to be a queen based on the chance
-            if(numSteps<=player.boostChance){
-                Instantiate(boostFly);
-                player.boost=10;
+            float numSteps = Mathf.Floor(Random.Range(0f,100f)); 
+            if(numSteps>player.boostChance){
+                if(GameObject.Find("boostFly(Clone)")!=null){
+                    player.boost+=10;
+                    player.moneyBoostTimer+=1800;
+                }else{
+                    Instantiate(boostFly);
+                    player.boost+=10;
+                    Debug.Log(numSteps + "fly");
+            }
             }else{
                 player.money += (double)(Random.Range(.1f,(float)player.workerGainPercent)*(float)player.totalMoney);
                 player.totalMoney+= player.workerGainPercent*player.totalMoney;
+                Debug.Log(numSteps + "cash");
         }
     }
 

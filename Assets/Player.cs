@@ -26,7 +26,8 @@ public class Player : MonoBehaviour
     public double workerGainPercent = .1;
     public double boost =1;
     public double boostChance =0;
-
+    public bool milestone1 = false;
+    public int moneyBoostTimer = 3600;
     void Start()
     {
         Application.targetFrameRate = 60;

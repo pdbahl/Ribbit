@@ -12,7 +12,7 @@ public class shopController : MonoBehaviour
                     1750,10500,150000,1234567,9876543,
                     666666,6969696,1200000,10000000,1500000,
                     21219909999,5000700000,23322622222,16665444332,67787667678,
-                    199999900099999,56703000030330,9242088660211132,22323000322112,1}; //item base prices
+                    19999900099999,5670300030330,92488660211132,2232300022112,1}; //item base prices
 
     int[] itemAmt = {0,0,0,0,0,
                     0,0,0,0,0,
@@ -64,6 +64,7 @@ public class shopController : MonoBehaviour
             itemFunc(j);
         }
         tUpgradesText.text = "Total Upgrades: " + totalUpgrades.ToString();
+        checkMilestones();
     }
     //these are all each individual upgrade's functionality
     public void item0U(){
@@ -135,7 +136,7 @@ public class shopController : MonoBehaviour
         }
     }
     public void item13U(){
-        if(buttonFunc(13,1)){
+        if(buttonFunc(13,1.223)){
             player.speedInc*=.95f;
         }
     }
@@ -222,6 +223,9 @@ public class shopController : MonoBehaviour
             return (a*.000000001).ToString("#.##")+"B";
         }else if (a>=1000000000000&&a<1000000000000000){
             return (a*.000000000001).ToString("#.##")+"T";
+        }else if (a>=1000000000000000&&a<1000000000000000000){
+            return (a*.000000000000001).ToString("#.##")+"q";
+            
         }
 
         return a.ToString("#.##");
@@ -235,5 +239,10 @@ public class shopController : MonoBehaviour
             return true;
         }
         return false;
+    }
+    void checkMilestones(){
+        if(itemAmt[0]==itemLimit[0]&&itemAmt[1]==itemLimit[1]&&itemAmt[2]==itemLimit[2]&&itemAmt[3]==itemLimit[3]&&itemAmt[4]==itemLimit[4]){
+            player.milestone1 = true;    
+        }
     }
 }
