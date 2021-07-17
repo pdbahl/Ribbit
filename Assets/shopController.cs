@@ -8,32 +8,6 @@ public class shopController : MonoBehaviour
 
     public Player player;
     public Button[] buttons = new Button[25];
-    double[] items = {1.2,4,125,1000,300,
-                    1750,10500,150000,1234567,9876543,
-                    666666,6969696,1200000,10000000,1500000,
-                    21219909999,5000700000,23322622222,16665444332,67787667678,
-                    19999900099999,5670300030330,92488660211132,2232300022112,1}; //item base prices
-
-    int[] itemAmt = {0,0,0,0,0,
-                    0,0,0,0,0,
-                    0,0,0,0,0,
-                    0,0,0,0,0,
-                    0,0,0,0,0}; //amount of times upgraded
-
-    int[] itemLimit = {10,20,5,2,10,
-                    100,20,5,50,5,
-                    10,1,15,10,10,
-                    3,5,10,5,10,
-                    1,10,2,100,1};//the max amount an item can be upgraded
-
-    int[] reqUpgrades = {0,0,0,0,0,
-                        30,30,30,30,30,
-                        100,100,100,100,100,
-                        200,200,200,200,200,
-                        250,250,250,250,250};//the min amount of total upgrades you need for an item to be purchaseable
-
-    int totalUpgrades = 0;
-    public double priceReduction = 0;
     public Text[] descTexts = new Text[25];
     string[] descs = {  " increase egg value by 5%"," increase egg rate by 5%"," DOUBLES egg value"," increase frog/click by 2"," gain passive frogs /s",
                         " gives .1% chance to spawn queenFrog","reduces shop costs by .15%/rank","increase egg value and rate by 25% each","increase max multiplier by .5/rank","increase bonus/frog/rank by .01",
@@ -63,7 +37,7 @@ public class shopController : MonoBehaviour
         for(int j = 0;j<buttons.Length;j++){
             itemFunc(j);
         }
-        tUpgradesText.text = "Total Upgrades: " + totalUpgrades.ToString();
+        tUpgradesText.text = "Total Upgrades: " + player.totalUpgrades.ToString();
         checkMilestones();
     }
     //these are all each individual upgrade's functionality
@@ -90,17 +64,17 @@ public class shopController : MonoBehaviour
     public void item4U(){
         if(buttonFunc(4,2.8)){
             player.fps = true;
-            player.fpsRate = itemAmt[4];
+            player.fpsRate = player.itemAmt[4];
         }
     }
     public void item5U(){
         if(buttonFunc(5,1.23)){
-            player.queenFrogChance +=.1;
+            player.queenFrogChance+=.1;
         }
     }
      public void item6U(){
         if(buttonFunc(6,1.6)){
-            priceReduction+=.15;
+            player.priceReduction+=.15;
         }
     }
      public void item7U(){
@@ -111,7 +85,7 @@ public class shopController : MonoBehaviour
     }
      public void item8U(){
         if(buttonFunc(8,1.22)){
-            player.maxMultiplyer+=0.5;   
+            player.maxMultiplyer+=.5;   
         }
     } 
     public void item9U(){
@@ -157,7 +131,7 @@ public class shopController : MonoBehaviour
     }
     public void item17U(){
         if(buttonFunc(17,5)){
-        player.workerSpeed *=1.2f;
+        player.workerSpeed*=1.2f;
         }
     }
     public void item18U(){
@@ -197,12 +171,12 @@ public class shopController : MonoBehaviour
     }
    //functionality of the buttons, changes colors and if theyre interactable
     void itemFunc(int _i){
-        if(itemAmt[_i]<itemLimit[_i]){
-            buttons[_i].GetComponentInChildren<Text>().text="item "+_i+": " + shortener(items[_i]*(1-(priceReduction)*.01));
+        if(player.itemAmt[_i]<player.itemLimit[_i]){
+            buttons[_i].GetComponentInChildren<Text>().text="item "+_i+": " + shortener(player.items[_i]*(1-(player.priceReduction)*.01));
         }else{
                     buttons[_i].GetComponentInChildren<Text>().text="item "+_i+" : LIMIT";
         }
-        if(player.money<items[_i]*(1-(priceReduction)*.01)||itemAmt[_i]>=itemLimit[_i]||reqUpgrades[_i]>totalUpgrades){
+        if(player.money<player.items[_i]*(1-(player.priceReduction)*.01)||player.itemAmt[_i]>=player.itemLimit[_i]||player.reqUpgrades[_i]>player.totalUpgrades){
             buttons[_i].interactable= false;
             buttons[_i].GetComponentInChildren<Text>().color = Color.white;
 
@@ -210,7 +184,7 @@ public class shopController : MonoBehaviour
             buttons[_i].interactable = true;
             buttons[_i].GetComponentInChildren<Text>().color = Color.green;
         }
-        string tempDesc = descs[_i]+"("+itemAmt[_i].ToString()+"/"+itemLimit[_i].ToString()+")";
+        string tempDesc = descs[_i]+"("+player.itemAmt[_i].ToString()+"/"+player.itemLimit[_i].ToString()+")";
         descTexts[_i].text = tempDesc;
     }
    
@@ -231,17 +205,18 @@ public class shopController : MonoBehaviour
         return a.ToString("#.##");
     }
     bool buttonFunc(int id,double priceInc){
-        if(player.money>=items[id]*(1-(priceReduction)*.01)&&itemAmt[id]<itemLimit[id]){
-            player.money-=items[id]*(1-(priceReduction)*.01);
-            items[id]*=priceInc;
-            itemAmt[id]++;
-            totalUpgrades++;
+        if(player.money>=player.items[id]*(1-(player.priceReduction)*.01)&&player.itemAmt[id]<player.itemLimit[id]){
+            player.money-=player.items[id]*(1-(player.priceReduction)*.01);
+            player.items[id]*=priceInc;
+            player.itemAmt[id]++;
+            player.totalUpgrades++;
             return true;
         }
         return false;
     }
     void checkMilestones(){
-        if(itemAmt[0]==itemLimit[0]&&itemAmt[1]==itemLimit[1]&&itemAmt[2]==itemLimit[2]&&itemAmt[3]==itemLimit[3]&&itemAmt[4]==itemLimit[4]){
+        if(player.itemAmt[0]==player.itemLimit[0]&&player.itemAmt[1]==player.itemLimit[1]&&player.itemAmt[2]==player.itemLimit[2]&&
+        player.itemAmt[3]==player.itemLimit[3]&&player.itemAmt[4]==player.itemLimit[4]){
             player.milestone1 = true;    
         }
     }
