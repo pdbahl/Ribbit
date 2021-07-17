@@ -22,9 +22,9 @@ public class stats : MonoBehaviour
         
         player.money += player.cpf;
         player.totalMoney += player.cpf;
-        stat.text = "Cash: "+ shortener(player.money) +"\nfrogs: "+ shortener(player.frogs)+"\ncash/sec "
-         + shortener((player.cpf*Application.targetFrameRate)) + "\ncurrentMultiplyer: "+ player.currentMultiplyer.ToString("#.#")+
-         "\ntotal money: " + shortener(player.totalMoney);
+        stat.text = "    Cash: "+ shortener(player.money) +"\n    frogs: "+ shortener(player.frogs)+"\n    cash/sec "
+         + shortener((player.cpf*Application.targetFrameRate)) + "\n    currentMultiplyer: "+ player.currentMultiplyer.ToString("#.#")+
+         "\n    total money: " + shortener(player.totalMoney);
     }
     //makes the numbers like 1,000,000 -> 1M for example
     public string shortener(double a){
