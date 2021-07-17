@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,6 +36,9 @@ public class stats : MonoBehaviour
             return (a*.000000001).ToString("#.##")+"B";
         }else if (a>=1000000000000&&a<1000000000000000){
             return (a*.000000000001).ToString("#.##")+"T";
+        }else if (a>=1000000000000000&&a<1000000000000000000){
+            return (a*.000000000000001).ToString("#.##")+"q";
+            
         }
 
         return a.ToString("#.##");

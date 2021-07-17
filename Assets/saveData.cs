@@ -9,6 +9,7 @@ public class saveData : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("player").GetComponent<Player>();
+        InvokeRepeating("saveJsonDataNoReset",10f,20f);
     }
 
     // Update is called once per frame
@@ -18,10 +19,17 @@ public class saveData : MonoBehaviour
     }
 
     void OnApplicationQuit(){
-        saveTheData();
+        saveJsonData();
     }
-    public void saveTheData(){
-        json = JsonUtility.ToJson(player);
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
+    public void saveJsonData(){
+        player.currentMultiplyer=1;
+        player.currentWorkers=0;
+        json = JsonUtility.ToJson(player);//serialize json
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);//write json to file
     }
+     public void saveJsonDataNoReset(){
+        json = JsonUtility.ToJson(player);//serialize json
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);//write json to file
+    }
+
 }

@@ -23,7 +23,7 @@ public class moneyBoost : MonoBehaviour
         timerText.text = (player.moneyBoostTimer/60).ToString("#");
         if(player.moneyBoostTimer<=0){
             player.moneyBoostTimer=3600;
-            player.boost-=10;
+            player.boost=1;
             Destroy(this.gameObject);
         }
     }

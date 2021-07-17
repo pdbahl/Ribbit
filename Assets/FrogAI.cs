@@ -53,7 +53,7 @@ public class FrogAI : MonoBehaviour
             }
             Destroy(transform.root.gameObject);
             if(this.gameObject.name=="queenFrog(Clone)"){
-                player.frogs+=100;
+                player.frogs+=player.queenFrogValue;
             }else{
                 player.frogs++;
             }        

@@ -219,5 +219,9 @@ public class shopController : MonoBehaviour
         player.itemAmt[3]==player.itemLimit[3]&&player.itemAmt[4]==player.itemLimit[4]){
             player.milestone1 = true;    
         }
+        if(player.itemAmt[5]==player.itemLimit[5]&&player.itemAmt[6]==player.itemLimit[6]&&player.itemAmt[7]==player.itemLimit[7]&&
+        player.itemAmt[8]==player.itemLimit[8]&&player.itemAmt[9]==player.itemLimit[9]){
+            player.milestone2 = true;    
+        }
     }
 }

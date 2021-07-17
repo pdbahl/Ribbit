@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
                         100,100,100,100,100,
                         200,200,200,200,200,
                         250,250,250,250,250};//the min amount of total upgrades you need for an item to be purchaseable
+
     public int totalUpgrades = 0;
     public double priceReduction = 0;
     public double money = 0;
@@ -51,14 +52,18 @@ public class Player : MonoBehaviour
     public double boost =1;
     public double boostChance =0;
     public bool milestone1 = false;
+    public bool milestone2=false;
     public int moneyBoostTimer = 3600;
     public double cpf;
+    public int queenFrogValue =100;
+    private bool milestone2Rewarded = false; 
     void Start()
     {
         loadData();
         cpf = eggRate*eggValue*frogs*currentMultiplyer*boost;
         Application.targetFrameRate = 60;
         speedInc=0.5f;
+        rewardMilestone2();
     }
 
     // Update is called once per frame
@@ -80,4 +85,11 @@ public class Player : MonoBehaviour
         print("data loaded.");
         }
     public void addFrog() => frogs+=frogInc;
+    private void rewardMilestone2(){
+        if(!milestone2Rewarded){
+            this.queenFrogValue = 150;
+            this.fpsRate*=2;
+            this.milestone2Rewarded=true;
+        }
+    }
 }
