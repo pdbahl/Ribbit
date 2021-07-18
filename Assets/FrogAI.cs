@@ -26,6 +26,7 @@ public class FrogAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       print(this.transform.position.x + this.transform.position.y);
         //make sure that it doesn't add to the running multiplier if its at the max multiplier already
         if(isRunning&&player.currentMultiplyer<player.maxMultiplyer){
             counted = true;
