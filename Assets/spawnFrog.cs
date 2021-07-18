@@ -42,7 +42,7 @@ public class spawnFrog : MonoBehaviour
     public void spawn(){
 
         for(int i = 0;i<player.frogInc;i++){
-            spawnPosition = new Vector3(Random.Range(-3.6f,-3f),2.5f,0f);
+            spawnPosition = new Vector2(Random.Range(-3.6f,-3f),2.5f);
             roll = Random.Range(1f,100f);
             numSteps = Mathf.Floor(roll/stepsize); //this just decides if its going to be a queen based on the chance
             if(numSteps*stepsize>player.queenFrogChance){
