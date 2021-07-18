@@ -61,7 +61,13 @@ public class Player : MonoBehaviour
     {
         loadData();
         cpf = eggRate*eggValue*frogs*currentMultiplyer*boost;
-        Application.targetFrameRate = 60;
+        #if UNITY_WEBGL
+            Debug.Log("Unity Editor");
+            Application.targetFrameRate=0;
+        #else
+            Debug.Log("Any other platform");
+            Application.targetFrameRate=60;
+        #endif
         speedInc=0.5f;
         rewardMilestone2();
     }
