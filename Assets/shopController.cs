@@ -12,7 +12,7 @@ public class shopController : MonoBehaviour
     string[] descs = {  " increase egg value by 5%"," increase egg rate by 5%"," DOUBLES egg value"," increase frog/click by 2"," gain passive frogs /s",
                         " gives .1% chance to spawn queenFrog","reduces shop costs by .15%/rank","increase egg value and rate by 25% each","increase max multiplier by .5/rank","increase bonus/frog/rank by .01",
                         "increase egg value by 10%/rank","increase frog/click by 5/rank","increase egg value by 5%/rank","descrese frog speed","increase passive frog/sec",
-                        "increase workers by 1/rank","decrease work time by 5%","increase worker speed","chance to possible get a 10x money boost","increase worker gains by 1%/rank",
+                        "increase workers by 1/rank","decrease work time by 5%","increase worker speed","1%/rank to get 10% of your total money from workers","increase worker gains by 1%/rank",
                         "TRIPLES egg value","increase passive frog/sec","gain 10% of your CURRENT frogs","increase max multiplier by .1/rank","unlock new worker location"};
     public Text tUpgradesText;
  

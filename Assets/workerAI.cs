@@ -15,7 +15,7 @@ public class workerAI : MonoBehaviour
         timer = 0;
         player = GameObject.FindGameObjectWithTag("player").GetComponent<Player>();
         home = this.transform.position;
-        target = new Vector2(-8.6f,3);
+        target = new Vector2(Random.Range(-8.6f,-8f),Random.Range(3f,3.5f));
     }  
 
     // Update is called once per frame
@@ -45,6 +45,7 @@ public class workerAI : MonoBehaviour
                 if(GameObject.Find("boostFly(Clone)")!=null){
                     player.boost+=10;
                     player.moneyBoostTimer+=1800;
+                    Debug.Log(numSteps + "addFly");
                 }else{
                     Instantiate(boostFly);
                     player.boost+=10;
