@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
     {
         loadData();
         cpf = eggRate*eggValue*frogs*currentMultiplyer*boost;
-        //Application.targetFrameRate = 60;
+        Application.targetFrameRate = 60;
         speedInc=0.5f;
         rewardMilestone2();
     }
