@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
     public double fpsRate = 0;
     public double queenFrogChance = 0;
     public double totalMoney = 0;
-    public float speedInc;
+    public float speedInc = .5f;
     public double currentMultiplyer = 1.0;
     public double maxMultiplyer = 1;
     public double bonusPerFrog = .02;
@@ -62,13 +62,12 @@ public class Player : MonoBehaviour
         loadData();
         cpf = eggRate*eggValue*frogs*currentMultiplyer*boost;
         #if UNITY_WEBGL
-            Debug.Log("Unity Editor");
+            Debug.Log("WebGL");
             Application.targetFrameRate=0;
         #else
             Debug.Log("Any other platform");
             Application.targetFrameRate=60;
         #endif
-        speedInc=0.5f;
         rewardMilestone2();
     }
 

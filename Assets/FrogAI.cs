@@ -21,19 +21,19 @@ public class FrogAI : MonoBehaviour
         target2 = new Vector2(Random.Range(.5f,1f),Random.Range(-2.25f,-3f));
         target3 = new Vector2(6f,Random.Range(-2f,-3f));
       position = gameObject.transform.position;  
+      speed = .5f;
     }
 
     // Update is called once per frame
     void Update()
     {
-       Debug.Log(this.transform.position.x +" "+ this.transform.position.y);
+      // Debug.Log(this.transform.position.x +" "+ this.transform.position.y+ " " + Time.deltaTime + " " + Application.targetFrameRate);
         
         if(isRunning&&player.currentMultiplyer<player.maxMultiplyer){
             counted = true;
             player.currentMultiplyer+=player.bonusPerFrog;
             isRunning=false;
         }
-        speed = player.speedInc;
         float step = speed*Time.deltaTime;
        transform.position = Vector2.MoveTowards(this.transform.position,target,step);
         
