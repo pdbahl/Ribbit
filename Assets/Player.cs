@@ -40,7 +40,11 @@ public class Player : MonoBehaviour
     public double fpsRate = 0;
     public double queenFrogChance = 0;
     public double totalMoney = 0;
+<<<<<<< Updated upstream
     public float speedInc = .5f;
+=======
+    public float speedInc = 0.5f;
+>>>>>>> Stashed changes
     public double currentMultiplyer = 1.0;
     public double maxMultiplyer = 1;
     public double bonusPerFrog = .02;
@@ -82,12 +86,17 @@ public class Player : MonoBehaviour
 
     }
     void loadData(){
-        string fileContents = File.ReadAllText(Application.persistentDataPath+"/playerData.json");
+        if (System.IO.File.Exists("myfile.txt"))
+        {
+            //do stuff
+
+            string fileContents = File.ReadAllText(Application.persistentDataPath + "/playerData.json");
 
             // Deserialize the JSON data 
             //  into a pattern matching the GameData class.
-        JsonUtility.FromJsonOverwrite(fileContents,this);
-        print("data loaded.");
+            JsonUtility.FromJsonOverwrite(fileContents, this);
+            print("data loaded.");
+        }
         }
     public void addFrog() => frogs+=frogInc;
     private void rewardMilestone2(){
