@@ -64,7 +64,7 @@ public class shopController : MonoBehaviour
     public void item4U(){
         if(buttonFunc(4,2.8)){
             player.fps = true;
-            player.fpsRate = player.itemAmt[4];
+            player.fpsRate +=.01666;
         }
     }
     public void item5U(){
@@ -111,12 +111,12 @@ public class shopController : MonoBehaviour
     }
     public void item13U(){
         if(buttonFunc(13,1.223)){
-            player.speedInc*=.95f;
+            player.speedInc*=.90f;
         }
     }
     public void item14U(){
         if(buttonFunc(14,2)){
-            player.fpsRate*=1.5;
+            player.fpsRate+=1;
         }
     }
     public void item15U(){

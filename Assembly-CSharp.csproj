@@ -57,11 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/timedEvents.cs" />
-    <Compile Include="Assets/loadData.cs" />
     <Compile Include="Assets/UINav.cs" />
     <Compile Include="Assets/spawnFrog.cs" />
     <Compile Include="Assets/saveData.cs" />
     <Compile Include="Assets/shopController.cs" />
+    <Compile Include="Assets/OfflineMode.cs" />
     <Compile Include="Assets/moneyBoost.cs" />
     <Compile Include="Assets/Player.cs" />
     <Compile Include="Assets/flyAI.cs" />

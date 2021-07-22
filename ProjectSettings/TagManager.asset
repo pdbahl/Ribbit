@@ -64,6 +64,8 @@ TagManager:
   - desc24
   - boostTimer
   - boostFly
+  - offline
+  - greeting
   layers:
   - Default
   - TransparentFX

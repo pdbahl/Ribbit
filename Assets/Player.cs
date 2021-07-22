@@ -6,6 +6,38 @@ using System.IO;
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
+    
+
+    
+    public double money = 0;
+    public double frogs = 0;
+    public double eggRate = .01;
+    public double eggValue = .03;
+    public int frogInc = 1;
+    public bool fps = false;
+    public double fpsRate = 0;
+    public double queenFrogChance = 0;
+    public double totalMoney = 0;
+    public float speedInc = .5f;
+    public double currentMultiplyer = 1.0;
+    public double maxMultiplyer = 1;
+    public double bonusPerFrog = .02;
+    public int workerTimer = 18000;
+    public int maxWorkers = 0;
+    public int currentWorkers = 0;
+    public float workerSpeed = .4f;
+    public double workerGainPercent = .1;
+    public double boost =1;
+    public double boostChance =0;
+    public bool milestone1 = false;
+    public bool milestone2=false;
+    public int moneyBoostTimer = 3600;
+    public double cpf;
+    public int queenFrogValue =100;
+    private bool milestone2Rewarded = false;
+    public double exitDate = 0;
+    public int totalUpgrades = 0;
+    public double priceReduction = 0;
     public double[] items = {1.2,4,125,1000,300,
                     1750,10500,150000,1234567,9876543,
                     666666,6969696,1200000,10000000,1500000,
@@ -28,50 +60,19 @@ public class Player : MonoBehaviour
                         100,100,100,100,100,
                         200,200,200,200,200,
                         250,250,250,250,250};//the min amount of total upgrades you need for an item to be purchaseable
-
-    public int totalUpgrades = 0;
-    public double priceReduction = 0;
-    public double money = 0;
-    public double frogs = 0;
-    public double eggRate = .01;
-    public double eggValue = .03;
-    public int frogInc = 1;
-    public bool fps = false;
-    public double fpsRate = 0;
-    public double queenFrogChance = 0;
-    public double totalMoney = 0;
-<<<<<<< Updated upstream
-    public float speedInc = .5f;
-=======
-    public float speedInc = 0.5f;
->>>>>>> Stashed changes
-    public double currentMultiplyer = 1.0;
-    public double maxMultiplyer = 1;
-    public double bonusPerFrog = .02;
-    public int workerTimer = 18000;
-    public int maxWorkers = 0;
-    public int currentWorkers = 0;
-    public float workerSpeed = .4f;
-    public double workerGainPercent = .1;
-    public double boost =1;
-    public double boostChance =0;
-    public bool milestone1 = false;
-    public bool milestone2=false;
-    public int moneyBoostTimer = 3600;
-    public double cpf;
-    public int queenFrogValue =100;
-    private bool milestone2Rewarded = false; 
     void Start()
     {
         loadData();
         cpf = eggRate*eggValue*frogs*currentMultiplyer*boost;
-        #if UNITY_WEBGL
+        /*#if UNITY_WEBGL
             Debug.Log("WebGL");
             Application.targetFrameRate=0;
         #else
             Debug.Log("Any other platform");
             Application.targetFrameRate=60;
         #endif
+        */
+        Application.targetFrameRate = 60;
         rewardMilestone2();
     }
 
@@ -80,17 +81,18 @@ public class Player : MonoBehaviour
     {
         cpf = eggRate*eggValue*frogs*currentMultiplyer*boost;
      if(currentMultiplyer<1){currentMultiplyer=1.0;}    
-        if(fps==true){
-            frogs+=.005 * fpsRate;
+     if(fps==true){
+        frogs+=.005 * fpsRate;
         }
 
     }
     void loadData(){
-        if (System.IO.File.Exists("myfile.txt"))
+        if (System.IO.File.Exists(Application.persistentDataPath + "/playerData.json"))
         {
             //do stuff
 
-            string fileContents = File.ReadAllText(Application.persistentDataPath + "/playerData.json");
+           string fileContents = File.ReadAllText(Application.persistentDataPath + "/playerData.json");
+            Debug.Log(fileContents);
 
             // Deserialize the JSON data 
             //  into a pattern matching the GameData class.
