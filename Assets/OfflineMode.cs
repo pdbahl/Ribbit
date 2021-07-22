@@ -25,14 +25,12 @@ public class OfflineMode : MonoBehaviour
             " frogs and " + shortener(secondsSince *(player.cpf*60)) + " dollars\n Money from workers: " + moneyFromWorkers;
             player.money += moneyFromWorkers;
             player.totalMoney += moneyFromWorkers;
-        }
-        else{
+        }else{
             offline.text = "You were gone for "+ secondsSince.ToString("#")+" seconds and gained..." + (secondsSince * (player.fpsRate)).ToString("#")+
             " frogs and " + shortener(secondsSince *(player.cpf*60)) + " dollars";
         }
         
         player.frogs += (secondsSince * (player.fpsRate));
-        Debug.Log(secondsSince + " " + player.fpsRate + " " + player.cpf);
         player.money += (secondsSince * (player.cpf*60));
         player.totalMoney += (secondsSince * (player.cpf*60));
         
