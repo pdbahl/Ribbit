@@ -66,6 +66,8 @@ TagManager:
   - boostFly
   - offline
   - greeting
+  - infoPanel
+  - disclaimer
   layers:
   - Default
   - TransparentFX

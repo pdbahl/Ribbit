@@ -9,6 +9,7 @@ public class UINav : MonoBehaviour
     public GameObject panel1;
     public GameObject panel2;
     public GameObject panel3;
+    public GameObject infoPanel;
 
     void Start()
     {
@@ -18,6 +19,8 @@ public class UINav : MonoBehaviour
         panel1 .SetActive(false);
         panel2 .SetActive(false);
         panel3 .SetActive(false);
+        infoPanel = GameObject.FindGameObjectWithTag("infoPanel");
+        infoPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -60,5 +63,11 @@ public class UINav : MonoBehaviour
     public void closeGame(){
         Application.Quit();
     }
-
+    public void closeInfoTab(){
+        infoPanel.SetActive(false);
+        }
+    public void showInfoTab(){
+        infoPanel.SetActive(true);
+        panel3.SetActive(false);
+        }
 }

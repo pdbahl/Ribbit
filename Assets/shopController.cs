@@ -13,7 +13,7 @@ public class shopController : MonoBehaviour
                         " gives .1% chance to spawn queenFrog","reduces shop costs by .15%/rank","increase egg value and rate by 25% each","increase max multiplier by .5/rank","increase bonus/frog/rank by .01",
                         "increase egg value by 10%/rank","increase frog/click by 5/rank","increase egg value by 5%/rank","descrese frog speed","increase passive frog/sec",
                         "increase workers by 1/rank","decrease work time by 5%","increase worker speed","1%/rank to get 10% of your total money from workers","increase worker gains by 1%/rank",
-                        "TRIPLES egg value","increase passive frog/sec","gain 10% of your CURRENT frogs","increase max multiplier by .1/rank","unlock new worker location"};
+                        "TRIPLES egg value","increase passive frog/sec","gain 10% of your CURRENT frogs","increase max multiplier by .1/rank","increase offline timer by 1hr/rank"};
     public Text tUpgradesText;
  
     // Start is called before the first frame update
@@ -116,7 +116,7 @@ public class shopController : MonoBehaviour
     }
     public void item14U(){
         if(buttonFunc(14,2)){
-            player.fpsRate+=1;
+            player.fpsRate*=1.05;
         }
     }
     public void item15U(){
@@ -151,7 +151,7 @@ public class shopController : MonoBehaviour
     }
     public void item21U(){
         if(buttonFunc(21,3.876)){
-            player.fpsRate*=1.5;
+            player.fpsRate*=1.05;
         }
     }
     public void item22U(){
@@ -165,14 +165,14 @@ public class shopController : MonoBehaviour
         }
     }
     public void item24U(){
-        if(buttonFunc(24,1)){
-
+        if(buttonFunc(24,1.22)){
+            player.maxOfflineTime++;
         }
     }
    //functionality of the buttons, changes colors and if theyre interactable
     void itemFunc(int _i){
         if(player.itemAmt[_i]<player.itemLimit[_i]){
-            buttons[_i].GetComponentInChildren<Text>().text="item "+_i+": " + shortener(player.items[_i]*(1-(player.priceReduction)*.01));
+            buttons[_i].GetComponentInChildren<Text>().text="item "+_i+": " + player.shortener(player.items[_i]*(1-(player.priceReduction)*.01));
         }else{
                     buttons[_i].GetComponentInChildren<Text>().text="item "+_i+" : LIMIT";
         }
@@ -187,23 +187,7 @@ public class shopController : MonoBehaviour
         string tempDesc = descs[_i]+"("+player.itemAmt[_i].ToString()+"/"+player.itemLimit[_i].ToString()+")";
         descTexts[_i].text = tempDesc;
     }
-   
-    public string shortener(double a){
-        if (a>=100000&&a<=999999){
-            return (a*.001).ToString("#.##")+"K";
-        }else if (a>=1000000&&a<1000000000){
-            return (a*.000001).ToString("#.##")+"M";
-        }else if (a>=1000000000&&a<1000000000000){
-            return (a*.000000001).ToString("#.##")+"B";
-        }else if (a>=1000000000000&&a<1000000000000000){
-            return (a*.000000000001).ToString("#.##")+"T";
-        }else if (a>=1000000000000000&&a<1000000000000000000){
-            return (a*.000000000000001).ToString("#.##")+"q";
-            
-        }
 
-        return a.ToString("#.##");
-    }
     bool buttonFunc(int id,double priceInc){
         if(player.money>=player.items[id]*(1-(player.priceReduction)*.01)&&player.itemAmt[id]<player.itemLimit[id]){
             player.money-=player.items[id]*(1-(player.priceReduction)*.01);

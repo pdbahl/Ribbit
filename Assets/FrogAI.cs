@@ -33,6 +33,7 @@ public class FrogAI : MonoBehaviour
             player.currentMultiplyer+=player.bonusPerFrog;
             isRunning=false;
         }
+        speed = player.speedInc;
         float step = speed*Time.deltaTime;
        transform.position = Vector2.MoveTowards(this.transform.position,target,step);
         

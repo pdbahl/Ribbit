@@ -38,11 +38,14 @@ public class Player : MonoBehaviour
     public double exitDate = 0;
     public int totalUpgrades = 0;
     public double priceReduction = 0;
+    public int maxOfflineTime = 1;
+
+
     public double[] items = {1.2,4,125,1000,300,
                     1750,10500,150000,1234567,9876543,
                     666666,6969696,1200000,10000000,1500000,
                     21219909999,5000700000,23322622222,16665444332,67787667678,
-                    19999900099999,5670300030330,92488660211132,2232300022112,1}; //item base prices
+                    19999900099999,5670300030330,92488660211132,2232300022112,55666666666666}; //item base prices
     public int[] itemAmt = {0,0,0,0,0,
                     0,0,0,0,0,
                     0,0,0,0,0,
@@ -53,7 +56,7 @@ public class Player : MonoBehaviour
                     100,20,5,50,5,
                     10,1,15,10,10,
                     3,5,10,5,10,
-                    1,10,2,100,1};//the max amount an item can be upgraded
+                    1,10,2,100,10};//the max amount an item can be upgraded
 
     public int[] reqUpgrades = {0,0,0,0,0,
                         30,30,30,30,30,
@@ -107,5 +110,24 @@ public class Player : MonoBehaviour
             this.fpsRate*=2;
             this.milestone2Rewarded=true;
         }
+    }
+    public string shortener(double a){
+        if (a>=100000&&a<=999999){
+            return (a*.001).ToString("#.##")+"K";
+        }else if (a>=1000000&&a<1000000000){
+            return (a*.000001).ToString("#.##")+"M";
+        }else if (a>=1000000000&&a<1000000000000){
+            return (a*.000000001).ToString("#.##")+"B";
+        }else if (a>=1000000000000&&a<1000000000000000){
+            return (a*.000000000001).ToString("#.##")+"T";
+        }else if (a>=1000000000000000&&a<1000000000000000000){
+            return (a * .000000000000001).ToString("#.##") + "q";
+        }else if (a>=1000000000000000000&&a<1000000000000000000000.0){
+            return (a * .000000000000000001).ToString("#.##") + "Q";
+        }else if (a>=1000000000000000000000.0&&a<1000000000000000000000000.0){
+            return (a * .000000000000000000001).ToString("#.##") + "s";
+        }
+
+        return a.ToString("#.##");
     }
 }
