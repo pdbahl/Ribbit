@@ -23,7 +23,7 @@ public class saveData : MonoBehaviour
 
     void OnApplicationQuit(){
       //  Debug.Log(System.DateTime.Now.ToOADate());
-        player.exitDate = System.DateTime.Now.ToOADate();
+     player.exitDate = System.DateTime.Now.ToOADate();
         saveJsonData();
     }
     public void saveJsonData(){

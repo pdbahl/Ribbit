@@ -7,9 +7,13 @@ public class OfflineMode : MonoBehaviour
 {
     Player player;
     Text offline;
+    Text disclaimerText;
     double secondsSince;
     public GameObject greeting;
     double moneyFromWorkers = 0;
+    double passiveMoneyGain = 0;
+    double passiveFrogGain = 0;
+    //double nerf = .1;
 
     
     // Start is called before the first frame update
@@ -18,21 +22,30 @@ public class OfflineMode : MonoBehaviour
         greeting = GameObject.FindGameObjectWithTag("greeting");
         player = GameObject.FindGameObjectWithTag("player").GetComponent<Player>();
         offline = GameObject.FindGameObjectWithTag("offline").GetComponent<Text>();
+        disclaimerText = GameObject.FindGameObjectWithTag("disclaimer").GetComponent<Text>();
         secondsSince = (System.DateTime.Now - DateTime.FromOADate(player.exitDate)).TotalSeconds;
+        if(secondsSince>player.maxOfflineTime*3600){
+            secondsSince = player.maxOfflineTime * 3600;
+            }
+        passiveMoneyGain = (secondsSince * (player.cpf * 60));
+        passiveFrogGain = (secondsSince * (player.fpsRate));
+        print(passiveFrogGain + " " + passiveMoneyGain);
         if (player.maxWorkers > 0&&secondsSince>(player.workerTimer/60)) {
-            moneyFromWorkers = (9 * (secondsSince * (player.cpf * 60)))*.2;
-            offline.text = "You were gone for "+ secondsSince.ToString("#")+" seconds and gained..." + (secondsSince * (player.fpsRate)).ToString("#")+
-            " frogs and " + shortener(secondsSince *(player.cpf*60)) + " dollars\n Money from workers: " + moneyFromWorkers;
+            moneyFromWorkers = (9 * (secondsSince * (player.cpf * 60)))*.1;
+            offline.text = "You were gone for "+ (secondsSince/3600).ToString("#.##")+" hours and gained..." + player.shortener(passiveFrogGain)+
+            " frogs and " + player.shortener(passiveMoneyGain) + " dollars\n Money from workers: " + player.shortener(moneyFromWorkers);
             player.money += moneyFromWorkers;
             player.totalMoney += moneyFromWorkers;
-        }else{
-            offline.text = "You were gone for "+ secondsSince.ToString("#")+" seconds and gained..." + (secondsSince * (player.fpsRate)).ToString("#")+
-            " frogs and " + shortener(secondsSince *(player.cpf*60)) + " dollars";
         }
-        
-        player.frogs += (secondsSince * (player.fpsRate));
-        player.money += (secondsSince * (player.cpf*60));
-        player.totalMoney += (secondsSince * (player.cpf*60));
+        else{
+            offline.text = "You were gone for "+ (secondsSince/3600).ToString("#.##")+" hours and gained..." + player.shortener(passiveFrogGain)+
+            " frogs and " + player.shortener(passiveMoneyGain) + " dollars";
+        }
+        disclaimerText.text = "You can only offline for a maximum of " + player.maxOfflineTime + " hours.";
+        player.frogs += passiveFrogGain;
+        Debug.Log(secondsSince + " " + player.fpsRate + " " + player.cpf);
+        player.money += passiveMoneyGain;
+        player.totalMoney += passiveMoneyGain;
         
        // Debug.Log(System.DateTime.Now + " " + player.exitDate + " " +secondsSince);
         if (!System.IO.File.Exists(Application.persistentDataPath + "/playerData.json"))
@@ -49,20 +62,5 @@ public class OfflineMode : MonoBehaviour
     public void closeGreeting() {
         greeting.SetActive(false);
     }
-    public string shortener(double a){
-        if (a>=100000&&a<=999999){
-            return (a*.001).ToString("#.##")+"K";
-        }else if (a>=1000000&&a<1000000000){
-            return (a*.000001).ToString("#.##")+"M";
-        }else if (a>=1000000000&&a<1000000000000){
-            return (a*.000000001).ToString("#.##")+"B";
-        }else if (a>=1000000000000&&a<1000000000000000){
-            return (a*.000000000001).ToString("#.##")+"T";
-        }else if (a>=1000000000000000&&a<1000000000000000000){
-            return (a*.000000000000001).ToString("#.##")+"q";
-            
-        }
-
-        return a.ToString("#.##");
-    }
+    
 }
